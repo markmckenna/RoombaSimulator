@@ -1,0 +1,32 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.7.0'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'javafx-gradle-plugin'
+
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+jfx {
+    mainClass = 'com.lantopia.roombasimulator.desktop.RoombaSimulator'
+    vendor = 'Lantopia'
+}
+
+dependencies {
+    compile project(':base')
+}
