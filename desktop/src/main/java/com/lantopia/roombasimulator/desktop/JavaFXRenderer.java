@@ -1,22 +1,23 @@
 package com.lantopia.roombasimulator.desktop;
 
-import com.lantopia.roombasimulator.Simulation;
+import com.lantopia.roombasimulator.Renderer;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 class JavaFXRenderer {
-    private final Simulation simulation;
+    private final Renderer renderer;
 
-    JavaFXRenderer(Simulation simulation) {
-        this.simulation = simulation;
+    JavaFXRenderer(Renderer renderer) {
+        this.renderer = renderer;
     }
+
 
     void draw(Canvas canvas) {
         final GraphicsContext out = canvas.getGraphicsContext2D();
 
-        simulation.renderSimulation(new Simulation.DrawingDelegate() {
+        renderer.update(new Renderer.Delegate() {
             @Override
             public void drawRectangularObstacle(double x1, double y1, double x2, double y2) {
                 out.setStroke(Color.BLUE);
